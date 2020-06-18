@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd"
+         version="4.0">
+
+    <!--配置过滤器-->
+    <filter>
+        <filter-name>CharacterEncodingFilter</filter-name>
+        <filter-class>xyz.vroided.filter.CharacterEncodingFilter</filter-class>
+    </filter>
+
+    <!--映射过滤器-->
+    <filter-mapping>
+        <filter-name>CharacterEncodingFilter</filter-name>
+        <!--“/*”表示拦截所有的请求 -->
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
+
+    <filter>
+        <filter-name>FilterConfigDemo</filter-name>
+        <filter-class>xyz.vroided.filter.FilterConfigDemo</filter-class>
+        <!--配置FilterConfigDemo过滤器的初始化参数-->
+        <init-param>
+            <param-name>name</param-name>
+            <param-value>admin</param-value>
+        </init-param>
+        <init-param>
+            <param-name>password</param-name>
+            <param-value>123456</param-value>
+        </init-param>
+    </filter>
+
+    <filter-mapping>
+        <filter-name>FilterConfigDemo</filter-name>
+        <!--“/*”表示拦截所有的请求 -->
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
+
+    <filter>
+        <filter-name>NoCacheFilter</filter-name>
+        <filter-class>xyz.vroided.filter.NoCacheFilter</filter-class>
+    </filter>
+
+    <filter-mapping>
+        <filter-name>NoCacheFilter</filter-name>
+        <!--只拦截Jsp请求-->
+        <url-pattern>*.jsp</url-pattern>
+    </filter-mapping>
+
+    <!-- 配置缓存过滤器 -->
+    <filter>
+        <filter-name>CacheFilter</filter-name>
+        <filter-class>xyz.vroided.filter.CacheFilter</filter-class>
+        <!-- 配置要缓存的web资源以及缓存时间，以小时为单位 -->
+        <init-param>
+            <param-name>css</param-name>
+            <param-value>4</param-value>
+        </init-param>
+        <init-param>
+            <param-name>jpg</param-name>
+            <param-value>1</param-value>
+        </init-param>
+        <init-param>
+            <param-name>js</param-name>
+            <param-value>4</param-value>
+        </init-param>
+        <init-param>
+            <param-name>png</param-name>
+            <param-value>4</param-value>
+        </init-param>
+    </filter>
+
+    <!-- 配置要缓存的web资源的后缀-->
+    <filter-mapping>
+        <filter-name>CacheFilter</filter-name>
+        <url-pattern>*.jpg</url-pattern>
+    </filter-mapping>
+
+    <filter-mapping>
+        <filter-name>CacheFilter</filter-name>
+        <url-pattern>*.css</url-pattern>
+    </filter-mapping>
+
+    <filter-mapping>
+        <filter-name>CacheFilter</filter-name>
+        <url-pattern>*.js</url-pattern>
+    </filter-mapping>
+
+    <filter-mapping>
+        <filter-name>CacheFilter</filter-name>
+        <url-pattern>*.png</url-pattern>
+    </filter-mapping>
+
+
+</web-app>

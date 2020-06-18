@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd"
+         version="4.0">
+
+    <!-- 注册针对ServletContext对象进行监听的监听器 -->
+    <listener>
+        <description>ServletContextListener监听器</description>
+        <!--实现了ServletContextListener接口的监听器类 -->
+        <listener-class>xyz.vroided.listener.MyServletContextListener</listener-class>
+    </listener>
+
+    <!--注册针对HttpSession对象进行监听的监听器-->
+    <listener>
+        <description>HttpSessionListener监听器</description>
+        <listener-class>xyz.vroided.listener.MyHttpSessionListener</listener-class>
+    </listener>
+    <!--HttpSession的销毁时机-->
+    <session-config>
+        <!--session在1分钟之后就被销毁-->
+        <session-timeout>1</session-timeout>
+    </session-config>
+
+    <!--注册针对ServletRequest对象进行监听的监听器-->
+    <listener>
+        <description>ServletRequestListener监听器</description>
+        <listener-class>xyz.vroided.listener.MyServletRequestListener</listener-class>
+    </listener>
+
+
+</web-app>
